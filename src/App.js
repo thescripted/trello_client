@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import "./App.css"
+import { observer } from "mobx-react"
+import Card from "./components/Card"
 
-function App() {
+export const App = observer(({ store }) => {
+  window.store = store
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header className='App-header'>
+        {store.data.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+        <button onClick={() => store.data.push("Thing")}> Add "Thing" </button>
+        <Card />
       </header>
     </div>
-  );
-}
-
-export default App;
+  )
+})
