@@ -1,9 +1,53 @@
-.card {
-  width: 400px;
-  height: 200px;
-  padding: 24px;
-  border: 1px solid red;
+.component {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 6px 8px;
   border-radius: 3px;
-  background: transparent;
-  color: white;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  white-space: normal;
+  background-color: white;
+  line-height: 16px;
+  margin: 6px 0;
+}
+
+.component:first-child {
+  margin: 0;
+}
+
+.component:hover {
+  color: rgb(9, 30, 66);
+  background-color: rgb(244, 244, 244);
+}
+
+.maintext {
+  text-align: left;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  padding: 2px 4px 4px;
+  cursor: pointer;
+}
+
+.iconspace {
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+  padding: 2px 4px 4px;
+  cursor: pointer;
+}
+
+.icon::before {
+  content: "🗙";
+}
+
+.icon:hover {
+  background-color: rgb(233, 233, 233);
 }

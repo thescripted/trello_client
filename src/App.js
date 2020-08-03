@@ -1,7 +1,7 @@
 import React from "react"
-import "./App.css"
 import { observer } from "mobx-react"
 import Card from "./components/Card"
+import List from "./components/List"
 
 export const App = observer(({ store }) => {
   window.store = store
@@ -12,7 +12,7 @@ export const App = observer(({ store }) => {
           <li key={index}>{item}</li>
         ))}
         <button onClick={() => store.data.push("Thing")}> Add "Thing" </button>
-        <Card />
+        <List />
       </header>
     </div>
   )

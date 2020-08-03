@@ -10,6 +10,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -26,7 +32,7 @@ code {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: lightblue;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

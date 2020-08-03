@@ -1,0 +1,72 @@
+.mainContainer {
+  background: rgb(222, 222, 222);
+  font-size: 14px;
+  border-radius: 3px;
+  width: 272px; /* Hoist to Container ? */
+  padding: 4px 8px;
+  color: rgb(23, 43, 77); /* Hoist this up to Container */
+}
+
+.cardContainer {
+  /* Update this with ovefflow handling, maybe spacing if possible. */
+}
+
+.listContainer {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.textarea {
+  width: 100%;
+  font: inherit;
+  font-weight: 600;
+  background-color: transparent;
+  resize: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  overflow: hidden;
+  padding: 4px 8px;
+}
+
+.textarea:focus {
+  background-color: rgb(244, 244, 244);
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  padding: 2px 4px 4px;
+  cursor: pointer;
+}
+
+.icon::before {
+  content: "🗙";
+}
+
+.icon:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.newCardButton {
+  border-radius: 3px;
+  color: rgb(120, 120, 120);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.newCardButton:hover {
+  background-color: rgb(200, 200, 200);
+}
+.plusIcon::before {
+  content: "+";
+  float: left;
+  margin-right: 4px;
+}

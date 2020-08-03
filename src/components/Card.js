@@ -1,8 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import styles from "../css/Card.module.css"
 
 const Card = () => {
-  return <div className={styles.card}>I am a Card.</div>
+  const [hovered, setHovered] = useState(false)
+  return (
+    <div
+      className={styles.component}
+      onMouseOver={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <span className={styles.maintext}>
+        I am a Card. am a Card. am a Card. am a Card. am a Card. am a Card. am a Card. am a Card.
+      </span>
+      <span
+        className={hovered ? styles.icon : styles.iconspace}
+        onClick={() => console.log("Delete")}
+      ></span>
+    </div>
+  )
 }
 
 export default Card
