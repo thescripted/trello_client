@@ -1,0 +1,23 @@
+.listContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0 4px;
+  overflow-x: scroll;
+  height: 100%;
+  margin-bottom: 8px;
+}
+
+.listContainer::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.listContainer::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.listContainer::-webkit-scrollbar-track {
+  background: rgba(9, 30, 66, 0.08);
+  border-radius: 10px;
+}

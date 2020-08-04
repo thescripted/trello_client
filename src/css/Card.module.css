@@ -1,8 +1,5 @@
 .component {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   width: 100%;
   box-sizing: border-box;
   min-height: 32px;
@@ -12,7 +9,7 @@
   white-space: normal;
   background-color: white;
   line-height: 16px;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 
 .component:first-child {
@@ -29,19 +26,15 @@
 }
 
 .icon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
   height: 16px;
   width: 16px;
   border-radius: 3px;
   padding: 2px 4px 4px;
   cursor: pointer;
-}
-
-.iconspace {
-  height: 20px;
-  width: 20px;
-  border-radius: 3px;
-  padding: 2px 4px 4px;
-  cursor: pointer;
+  background-color: rgba(233, 233, 233, 0.7);
 }
 
 .icon::before {
@@ -50,4 +43,15 @@
 
 .icon:hover {
   background-color: rgb(233, 233, 233);
+}
+
+.minimodal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  height: 80px;
+  width: 100%;
+  z-index: 10;
+  border-radius: 3px;
 }
