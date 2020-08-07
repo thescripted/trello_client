@@ -1,6 +1,6 @@
-import React from "react"
-import List from "./List"
-import styles from "../css/Container.module.css"
+import React from 'react';
+import List from './List';
+import styles from '../css/Container.module.css';
 
 const Container = () => {
   return (
@@ -13,7 +13,7 @@ const Container = () => {
       <List />
       <List />
     </div>
-  )
-}
+  );
+};
 
-export default Container
+export default Container;

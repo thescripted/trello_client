@@ -56,7 +56,7 @@
 }
 
 .icon::before {
-  content: "🗙";
+  content: '🗙';
 }
 
 .icon:hover {
@@ -82,7 +82,7 @@
   background-color: rgb(200, 200, 200);
 }
 .plusIcon::before {
-  content: "+";
+  content: '+';
   float: left;
   margin-right: 4px;
 }

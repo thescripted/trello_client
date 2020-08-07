@@ -1,8 +1,9 @@
-import React from "react"
-import styles from "../css/List.module.css"
-import Card from "./Card"
+import React from 'react';
+import styles from '../css/List.module.css';
+import Card from './Card';
 
-const List = () => {
+const List = props => {
+  console.log(props);
   return (
     <div className={styles.listLayoutContainer}>
       <div className={styles.mainContainer}>
@@ -13,8 +14,8 @@ const List = () => {
             rows={1}
             defaultValue='Georgia Tech Sucks'
             onKeyPress={e => {
-              if (e.key === "Enter") {
-                e.target.blur() // Remove Focus
+              if (e.key === 'Enter') {
+                e.target.blur(); // Remove Focus
               }
             }}
           ></textarea>
@@ -46,7 +47,7 @@ const List = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;

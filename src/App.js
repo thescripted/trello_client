@@ -1,10 +1,10 @@
-import React from "react"
-import { observer } from "mobx-react"
-import Container from "./components/Container"
-import Banner from "./components/Banner"
+import React from 'react';
+import { observer } from 'mobx-react';
+import Container from './components/Container';
+import Banner from './components/Banner';
 
 export const App = observer(({ store }) => {
-  window.store = store
+  window.store = store;
   return (
     <div className='App'>
       <Banner />
@@ -17,5 +17,5 @@ export const App = observer(({ store }) => {
         <button onClick={() => store.data.push("Thing")}> Add "Thing" </button>
       </header> */}
     </div>
-  )
-})
+  );
+});

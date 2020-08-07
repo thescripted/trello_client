@@ -38,7 +38,7 @@
 }
 
 .icon::before {
-  content: "🗙";
+  content: '🗙';
 }
 
 .icon:hover {
