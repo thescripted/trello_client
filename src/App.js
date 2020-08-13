@@ -1,14 +1,13 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import Container from './components/Container';
 import Banner from './components/Banner';
+import { dataStore } from './DataStore';
 
-export const App = observer(({ store }) => {
-  window.store = store;
+export const App = () => {
   return (
     <div className='App'>
       <Banner />
-      <Container />
+      <Container store={dataStore} />
 
       {/* <header className='App-header'>
         {store.data.map((item, index) => (
@@ -18,4 +17,4 @@ export const App = observer(({ store }) => {
       </header> */}
     </div>
   );
-});
+};

@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { App } from './App';
-import { dataStore } from './DataStore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App store={dataStore} />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

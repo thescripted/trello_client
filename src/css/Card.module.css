@@ -45,13 +45,31 @@
   background-color: rgb(233, 233, 233);
 }
 
-.minimodal {
+.modalContainer {
   position: absolute;
   top: 0;
   left: 0;
   background-color: red;
   height: 80px;
+  padding: 4px 6px;
   width: 100%;
-  z-index: 10;
   border-radius: 3px;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.textContainer {
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  font: inherit;
+  background-color: transparent;
+  resize: none;
+  border: none;
+  transition: background-color 0.2s;
+  overflow: hidden;
+  border-radius: 3px;
+  box-sizing: border-box;
 }
