@@ -5,9 +5,9 @@ import { observer } from 'mobx-react';
 
 const Container = observer(({ store }) => {
   let data = store.data;
-  const deleteList = list_index => {
+  function deleteList(list_index) {
     data.splice(list_index, 1);
-  };
+  }
 
   return (
     <div id='container' className={styles.listContainer}>

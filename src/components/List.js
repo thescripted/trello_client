@@ -1,21 +1,26 @@
 import React from 'react';
 import styles from '../css/List.module.css';
-import Card from './Card';
+import Card, { CardTemplate } from './Card';
 import { observer } from 'mobx-react';
 
-const List = observer(({ generator, list, id, onDelete }) => {
+function NewList() {
+  return (
+    <div className={styles.newList}>
+      <span className={styles.plusIcon}></span>
+      <p>Add Another List</p>
+    </div>
+  );
+}
+
+const List = observer(({ generator, list, id, deleteList }) => {
   generator ? console.log(' ') : console.log(list.cards);
-  function newList() {
-    return (
-      <div className={styles.newList}>
-        <span className={styles.plusIcon}></span>
-        <p>Add Another List</p>
-      </div>
-    );
+
+  function deleteCard(card_index) {
+    list.cards.splice(card_index, 1);
   }
 
   return generator ? (
-    newList()
+    <NewList />
   ) : (
     <div className={styles.listLayoutContainer}>
       <div className={styles.mainContainer}>
@@ -34,19 +39,14 @@ const List = observer(({ generator, list, id, onDelete }) => {
               }
             }}
           ></textarea>
-          <span className={styles.icon} onClick={() => onDelete(id)}></span>
+          <span className={styles.icon} onClick={() => deleteList(id)}></span>
         </div>
         <div className={styles.cardContainer}>
           {list.cards.map((card, index) => (
-            <Card key={`Card-${index}`} id={index} card={card} />
+            <Card key={`Card-${index}`} id={index} card={card} deleteCard={deleteCard} />
           ))}
         </div>
-        <div className={styles.listFooter}>
-          <button className={styles.newCardButton}>
-            <span className={styles.plusIcon}></span>
-            <p>Add Another Card</p>
-          </button>
-        </div>
+        <CardTemplate />
       </div>
     </div>
   );
