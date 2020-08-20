@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styles from '../css/List.module.css';
-import Card, { CardTemplate } from './Card';
+import styles from './List.module.css';
 import { observer } from 'mobx-react';
 
-export const ListTemplate = observer(({ state_ref }) => {
-  console.log(state_ref);
+const ListTemplate = observer(({ addList }) => {
   const [generate, setGenerate] = useState(false);
   const [text, setText] = useState('');
   const newListRef = useRef(null);
@@ -18,9 +16,8 @@ export const ListTemplate = observer(({ state_ref }) => {
     }
   };
 
-  function addList() {
-    //TODO: Validate List before submission
-    state_ref.push({ title: text, cards: [] });
+  function adder() {
+    addList(text);
     setText('');
   }
 
@@ -52,14 +49,14 @@ export const ListTemplate = observer(({ state_ref }) => {
               onKeyPress={e => {
                 if (e.key === 'Enter') {
                   e.target.blur(); // Remove Focus
-                  addList();
+                  adder();
                 }
               }}
               rows={2}
             ></textarea>
           </div>
           <div className={styles.selection}>
-            <button className={`${styles.button} ${styles.primarybutton}`} onClick={addList}>
+            <button className={`${styles.button} ${styles.primarybutton}`} onClick={adder}>
               Add List
             </button>
             <button className={`${styles.button} ${styles.cancelbutton}`}>Delete List</button>
@@ -75,40 +72,4 @@ export const ListTemplate = observer(({ state_ref }) => {
   );
 });
 
-const List = observer(({ list, id, deleteList }) => {
-  function deleteCard(card_index) {
-    list.cards.splice(card_index, 1);
-  }
-
-  return (
-    <div className={styles.listLayoutContainer}>
-      <div className={styles.mainContainer}>
-        <div className={styles.headerContainer}>
-          {/* Does not yet support auto resizing*/}
-          <textarea
-            className={styles.textarea}
-            rows={1}
-            value={list.title}
-            onChange={e => {
-              list.title = e.target.value;
-            }}
-            onKeyPress={e => {
-              if (e.key === 'Enter') {
-                e.target.blur(); // Remove Focus
-              }
-            }}
-          ></textarea>
-          <span className={styles.icon} onClick={() => deleteList(id)}></span>
-        </div>
-        <div className={styles.cardContainer}>
-          {list.cards.map((card, index) => (
-            <Card key={`Card-${index}`} id={index} card={card} deleteCard={deleteCard} />
-          ))}
-        </div>
-        <CardTemplate list_ref={list} />
-      </div>
-    </div>
-  );
-});
-
-export default List;
+export default ListTemplate;
