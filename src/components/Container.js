@@ -1,5 +1,5 @@
 import React from 'react';
-import List from './List';
+import List, { ListTemplate } from './List';
 import styles from '../css/Container.module.css';
 import { observer } from 'mobx-react';
 
@@ -12,9 +12,9 @@ const Container = observer(({ store }) => {
   return (
     <div id='container' className={styles.listContainer}>
       {data.map((listItem, index) => (
-        <List key={`List${index}`} list={listItem} id={index} onDelete={deleteList} />
+        <List key={`List${index}`} list={listItem} id={index} deleteList={deleteList} />
       ))}
-      <List generator={true} />
+      <ListTemplate state_ref={data} />
     </div>
   );
 });

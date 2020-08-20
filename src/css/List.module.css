@@ -1,4 +1,5 @@
 .listLayoutContainer {
+  font-size: 14px;
   height: 100%;
 }
 
@@ -39,6 +40,7 @@
   overflow: hidden;
   padding: 4px 8px;
   border-radius: 3px;
+  box-sizing: border-box;
 }
 
 .textarea:focus {
@@ -99,4 +101,55 @@
   content: '+';
   float: left;
   margin-right: 4px;
+}
+
+/* Testing */
+
+.newCardContainer {
+  background-color: white;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* height: 130px; */
+  padding: 4px 6px;
+  border-radius: 3px;
+  z-index: 99;
+}
+
+.listContent {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  padding: 4px;
+  width: 272px;
+  box-sizing: border-box;
+}
+
+.textContainer {
+  width: 100%;
+}
+
+.selection {
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 8px 2px 2px;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.primarybutton {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.cancelbutton {
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px;
+  font-size: 14px;
 }

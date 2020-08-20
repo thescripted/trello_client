@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import styles from '../css/Card.module.css';
 
-export const CardTemplate = () => {
+export const CardTemplate = observer(({ list_ref }) => {
   const [generate, setGenerate] = useState(false);
+  const [text, setText] = useState('');
   const newCardRef = useRef(null);
 
   const removeCardTemplate = e => {
@@ -15,6 +16,12 @@ export const CardTemplate = () => {
       setGenerate(false);
     }
   };
+
+  function addCard() {
+    //TODO: Validate Card before submission
+    list_ref.cards.push({ content: text });
+    setText('');
+  }
 
   useEffect(
     function () {
@@ -37,10 +44,13 @@ export const CardTemplate = () => {
             id='text'
             ref={newCardRef}
             className={styles.textarea}
+            value={text}
+            onChange={e => setText(e.target.value)}
             placeholder='Enter a value for this card...'
             onKeyPress={e => {
               if (e.key === 'Enter') {
                 e.target.blur(); // Remove Focus
+                addCard();
               }
             }}
             rows={3}
@@ -48,7 +58,9 @@ export const CardTemplate = () => {
         </div>
       </div>
       <div className={styles.selection}>
-        <button className={`${styles.button} ${styles.primarybutton}`}>Add Card</button>
+        <button className={`${styles.button} ${styles.primarybutton}`} onClick={addCard}>
+          Add Card
+        </button>
         <button className={`${styles.button} ${styles.cancelbutton}`}>Delete Card</button>
       </div>
     </>
@@ -65,7 +77,7 @@ export const CardTemplate = () => {
       </button>
     </div>
   );
-};
+});
 
 const Modal = observer(({ card, setModal }) => {
   const ref = useRef(null);
@@ -129,7 +141,6 @@ const Card = observer(({ card, id, deleteCard }) => {
       onMouseOver={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => {
-        console.log('clicked!!!');
         setModal(true);
       }}
     >
