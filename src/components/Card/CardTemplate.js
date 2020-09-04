@@ -20,6 +20,7 @@ const CardTemplate = observer(({ addCard }) => {
   function adder() {
     addCard(text);
     setText('');
+    setGenerate(false);
   }
 
   useEffect(
@@ -60,7 +61,7 @@ const CardTemplate = observer(({ addCard }) => {
         <button className={`${styles.button} ${styles.primarybutton}`} onClick={adder}>
           Add Card
         </button>
-        <button className={`${styles.button} ${styles.cancelbutton}`}>Delete Card</button>
+        <button className={`${styles.button} ${styles.cancelbutton}`}>Cancel</button>
       </div>
     </>
   ) : (

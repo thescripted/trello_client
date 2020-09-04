@@ -14,6 +14,7 @@ const Card = observer(({ card, deleteCard }) => {
     ) {
       setModal(false);
     }
+    e.stopPropagation();
   };
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const Card = observer(({ card, deleteCard }) => {
 
   return (
     <div
+      id={card.id}
       className={styles.component}
       onMouseOver={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -38,7 +40,7 @@ const Card = observer(({ card, deleteCard }) => {
       }}
     >
       <span className={styles.maintext}>{card.content}</span>
-      <span className={hovered ? styles.icon : ''} onClick={deleteCard}></span>
+      <span id={card.id} className={hovered ? styles.icon : ''} onClick={deleteCard}></span>
       {modal && <Modal card={card} setModal={setModal} />}
     </div>
   );

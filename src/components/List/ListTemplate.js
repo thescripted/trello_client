@@ -19,6 +19,7 @@ const ListTemplate = observer(({ addList }) => {
   function adder() {
     addList(text);
     setText('');
+    setGenerate(false);
   }
 
   useEffect(
@@ -45,7 +46,7 @@ const ListTemplate = observer(({ addList }) => {
               className={styles.textarea}
               value={text}
               onChange={e => setText(e.target.value)}
-              placeholder='Enter a value for this card...'
+              placeholder='Enter a value for this list...'
               onKeyPress={e => {
                 if (e.key === 'Enter') {
                   e.target.blur(); // Remove Focus
@@ -59,7 +60,7 @@ const ListTemplate = observer(({ addList }) => {
             <button className={`${styles.button} ${styles.primarybutton}`} onClick={adder}>
               Add List
             </button>
-            <button className={`${styles.button} ${styles.cancelbutton}`}>Delete List</button>
+            <button className={`${styles.button} ${styles.cancelbutton}`}>Cancel</button>
           </div>
         </div>
       </div>

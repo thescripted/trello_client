@@ -115,6 +115,7 @@
   display: inline-flex;
   justify-content: space-between;
   padding: 8px 2px 2px;
+  box-sizing: border-box;
 }
 
 .button:hover {
