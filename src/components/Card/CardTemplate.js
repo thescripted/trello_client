@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { observer } from 'mobx-react';
 import styles from './Card.module.css';
 
-const CardTemplate = observer(({ addCard }) => {
+const CardTemplate = ({ addCard }) => {
   const [generate, setGenerate] = useState(false);
   const [text, setText] = useState('');
   const newCardRef = useRef(null);
@@ -77,6 +76,6 @@ const CardTemplate = observer(({ addCard }) => {
       </button>
     </div>
   );
-});
+};
 
 export default CardTemplate;

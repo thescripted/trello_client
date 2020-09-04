@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 import styles from './Card.module.css';
 
-const Modal = observer(({ card, setModal }) => {
+const Modal = ({ card, setModal }) => {
   const ref = useRef(null);
 
   // Focuses on the modal container & highlights the contained text.
@@ -31,6 +31,6 @@ const Modal = observer(({ card, setModal }) => {
       </div>
     </div>
   );
-});
+};
 
 export default Modal;

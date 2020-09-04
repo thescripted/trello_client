@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './List.module.css';
-import { observer } from 'mobx-react';
 
-const List = observer(({ children, list, deleteList }) => {
+const List = ({ children, list, updateList, deleteList }) => {
   return (
     <div className={styles.listLayoutContainer}>
       <div className={styles.mainContainer}>
@@ -13,7 +12,7 @@ const List = observer(({ children, list, deleteList }) => {
             rows={1}
             value={list.title}
             onChange={e => {
-              list.title = e.target.value;
+              updateList(e);
             }}
             onKeyPress={e => {
               if (e.key === 'Enter') {
@@ -28,6 +27,6 @@ const List = observer(({ children, list, deleteList }) => {
       </div>
     </div>
   );
-});
+};
 
 export default List;

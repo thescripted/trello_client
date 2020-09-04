@@ -4,63 +4,65 @@ import Card from './Card/Card';
 import ListTemplate from './List/ListTemplate';
 import CardTemplate from './Card/CardTemplate';
 import styles from './Container.module.css';
-import { useQuery } from 'urql';
 import { Store } from '../StateProvider';
 
 const Container = () => {
   const { state, dispatch } = useContext(Store);
-  useEffect(function () {
-    dispatch({ type: 'ADD_CARD' });
-  }, []);
+
   const data = [];
-  console.log(state);
   function addList(text) {
-    //add some validation
-    data.push({ title: text, cards: [], id: data.length * 100 });
+    dispatch({ type: 'ADD_LIST', value: text });
   }
 
-  function addCard(...args) {
-    let list_id = args[0];
-    let content = args[1];
-    data[list_id].cards.push({
-      content: content,
-      id: data[list_id].cards.length + list_id * 100
-    });
+  function addCard(list_id, content) {
+    console.log();
+    dispatch({ type: 'ADD_CARD', id: list_id, content: content });
   }
 
-  function deleteList(list_index) {
-    data.splice(list_index, 1);
+  function updateList(list_id, e) {
+    dispatch({ type: 'UPDATE_LIST', value: e.target.value, id: list_id });
   }
 
-  function deleteCard(list_index, card_index) {
-    data[list_index].cards.splice(card_index, 1);
+  function deleteList(list_id) {
+    dispatch({ type: 'DELETE_LIST', id: list_id });
   }
+
+  function deleteCard(list_id, card_id) {
+    dispatch({ type: 'DELETE_CARD', id: list_id, card_id: card_id });
+  }
+
   return (
     <div className={styles.listContainer}>
-      {data
-        .slice() // [mobx]: Sort the array on a copy rather than the datastore
+      {state
+        .slice() // Immer: Presevere immutability to read-only states by creating a copy
         .sort(function (a, b) {
           return a.pos - b.pos;
         })
-        .map((list, list_index) => {
+        .map((list, list_idx) => {
           return (
             <>
-              <List key={list.id} list={list} deleteList={() => deleteList(list_index)}>
+              <List
+                key={`List${list_idx}_${list.list_id.slice(0, 8)}`}
+                list={list}
+                updateList={updateList.bind(this, list.list_id)}
+                deleteList={() => deleteList(list.list_id)}
+              >
                 {list.cards
+                  .slice() // Immer: Presevere immutability to read-only states by creating a copy
                   .sort(function (a, b) {
                     return a.pos - b.pos;
                   })
-                  .map((card, card_index) => {
+                  .map((card, card_idx) => {
                     return (
                       <Card
-                        key={`Card-${card.id}`}
-                        list_id={list_index}
+                        key={`Card${card_idx}_${card.card_id.slice(0, 8)}`} // This might not be universally unique ):
+                        list_id={list.list_id}
                         card={card}
-                        deleteCard={() => deleteCard(list_index, card_index)}
+                        deleteCard={() => deleteCard(list.list_id, card.card_id)}
                       />
                     );
                   })}
-                <CardTemplate addCard={addCard.bind(this, list_index)} />
+                <CardTemplate addCard={addCard.bind(this, list.list_id)} />
               </List>
             </>
           );

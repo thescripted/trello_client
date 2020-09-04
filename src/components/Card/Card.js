@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import styles from './Card.module.css';
 import Modal from './Modal';
 
-const Card = observer(({ card, deleteCard }) => {
+const Card = ({ card, deleteCard }) => {
   const [hovered, setHovered] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -44,6 +44,6 @@ const Card = observer(({ card, deleteCard }) => {
       {modal && <Modal card={card} setModal={setModal} />}
     </div>
   );
-});
+};
 
 export default Card;

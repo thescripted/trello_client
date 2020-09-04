@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './List.module.css';
-import { observer } from 'mobx-react';
 
-const ListTemplate = observer(({ addList }) => {
+const ListTemplate = ({ addList }) => {
   const [generate, setGenerate] = useState(false);
   const [text, setText] = useState('');
   const newListRef = useRef(null);
@@ -71,6 +70,6 @@ const ListTemplate = observer(({ addList }) => {
       <p>Add Another List</p>
     </div>
   );
-});
+};
 
 export default ListTemplate;
